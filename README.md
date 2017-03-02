@@ -44,6 +44,13 @@ TODO
   git clone --depth 30 git@github.com:holms/musichub-backend.git back
 ```
 
+* Run install action for your distro
+For Ubuntu Xenial
+``` make install_xenial ```
+For Debian Jessie
+``` make install_jessie ```
+
+
 ### Build backend-dev-base image
 
 First you need to build `backend development base image`. This image has all pre-install dependencies for `backend development container`. This is done to save your time when re-building `backend development container`, so you'll just reinstall only `required.txt` and nothing else.
