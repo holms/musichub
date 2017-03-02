@@ -19,7 +19,10 @@ destroy:
 	-docker rmi -f $(shell docker images -q -f dangling=true)
 	-docker rmi -f $(shell docker images -q)
 	-docker volume ls -qf dangling=true | xargs docker volume rm
-	-docker system prune
+	-docker system prune -f
+
+clean:
+	-docker system prune -f
 
 kill:
 	-docker kill $(shell docker ps -q)
