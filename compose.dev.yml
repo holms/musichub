@@ -1,0 +1,17 @@
+version: '3'
+services:
+
+  pgsql:
+      environment:
+          PGSQL_ROLE_1_USERNAME: root
+          PGSQL_ROLE_1_PASSWORD: root
+          PGSQL_DB_1_OWNER: root
+
+  backend:
+    build:
+      dockerfile: Dockerfile.dev
+    environment:
+      DJANGO_SETTINGS_MODULE: musichub.settings_dev
+    volumes:
+        - "./back:/code"
+    command: python manage.py runserver 0.0.0.0:8000
