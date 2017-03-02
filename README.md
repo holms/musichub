@@ -43,9 +43,10 @@ TODO
   git clone --depth 30 git@github.com:musichub-frontend.git front && \
   git clone --depth 30 git@github.com:musichub-backend.git back
 ```
-###
 
-First you need to build `backend development base container`. This container has all pre-install dependencies for `backend development container`. This is done to save your time when re-building `backend development container`, so you'll just reinstall only `required.txt` and nothing else.
+### Build backend-dev-base image
+
+First you need to build `backend development base image`. This image has all pre-install dependencies for `backend development container`. This is done to save your time when re-building `backend development container`, so you'll just reinstall only `required.txt` and nothing else.
 
 ```
 make back-build-base
