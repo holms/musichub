@@ -9,9 +9,22 @@ install:
 	sudo pip -v install --upgrade pip
 	sudo pip -v install docker-compose pyyaml
 
-install_linux:
-	sudo apt install -y curl git wget python2.7 python-dev python-pip gnupg apt-transport-https ca-certificates
+install_xenial:
+	sudo apt-get install -y --no-install-recommends linux-image-extra-$(uname -r) linux-image-extra-virtual apt-transport-httpsi \
+	   	ca-certificates curl software-properties-common git wget python2.7 python-dev python-pip gnupg
+	curl -fsSL https://apt.dockerproject.org/gpg | sudo apt-key add -
+	sudo add-apt-repository "deb https://apt.dockerproject.org/repo/ ubuntu-$(lsb_release -cs) main"
+	sudo apt-get update
+	sudo apt-get -y install docker-engine
+	sudo service docker start
+	-sudo groupadd docker
+	-sudo gpasswd -a ${USER} docker
+	sudo service docker restart
 	sudo pip install --upgrade pip
+	sudo pip install docker-compose
+
+install_jessie:
+	sudo apt install -y curl git wget python2.7 python-dev python-pip gnupg apt-transport-https ca-certificates
 	sudo apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 	sudo bash -c 'echo "deb https://apt.dockerproject.org/repo debian-jessie main" > /etc/apt/sources.list.d/docker.list'
 	sudo apt-get update
@@ -20,6 +33,8 @@ install_linux:
 	-sudo groupadd docker
 	-sudo gpasswd -a ${USER} docker
 	sudo service docker restart
+	sudo pip install --upgrade pip
+	sudo pip install docker-compose
 
 back-run:
 	docker-compose -f compose.yml -f compose.dev.yml up backend
