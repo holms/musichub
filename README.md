@@ -40,8 +40,8 @@ TODO
 ```
   git clone --depth 30 git@github.com:holms/musichub-deploy.git musichub && \
   cd musichub && \
-  git clone --depth 30 git@github.com:musichub-frontend.git front && \
-  git clone --depth 30 git@github.com:musichub-backend.git back
+  git clone --depth 30 git@github.com:holms/musichub-frontend.git front && \
+  git clone --depth 30 git@github.com:holms/musichub-backend.git back
 ```
 
 ### Build backend-dev-base image
